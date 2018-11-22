@@ -3,6 +3,6 @@
 @section('title', 'Home')
 
 @section('content')
-  @include('homeslider')
-  @include('body')
+  @include('partials.homeslider')
+  @include('partials.body')
 @endsection

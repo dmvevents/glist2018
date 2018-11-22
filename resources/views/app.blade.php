@@ -18,7 +18,7 @@
   <body>
 
     <!-- NAV BAR -->
-    @include('nav')
+    @include('partials.nav')
 
     @yield('content')
 
@@ -26,7 +26,7 @@
 
 
     <!-- Footer -->
-    @include('footer')
+    @include('partials.footer')
 
   </body>
 
