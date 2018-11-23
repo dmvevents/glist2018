@@ -18,3 +18,23 @@ Route::get('/', function () {
 Route::get('/form', function () {
     return view('form1');
 });
+
+Route::get('/events', function () {
+    return view('events');
+});
+
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/services', function () {
+    return view('services');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
