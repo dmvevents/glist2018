@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration
+class CreateCompanyTable extends Migration
 {
   /**
   * Run the migrations.
@@ -18,13 +18,12 @@ class CreateGroupsTable extends Migration
       $table->increments('id')->unique();
       $table->string('name');
       $table->string('email')->unique();
-      $table->unsignedInteger('address_id')->nullable();;
+      $table->unsignedInteger('address_id')->nullable();
       $table->foreign('address_id')
       ->references('id')
       ->on('address')
       ->onDelete('set null');
       $table->string('ein');
-
       $table->timestamps();
     });
   }
@@ -36,6 +35,6 @@ class CreateGroupsTable extends Migration
   */
   public function down()
   {
-    Schema::dropIfExists('groups');
+    Schema::dropIfExists('company');
   }
 }

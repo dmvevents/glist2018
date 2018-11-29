@@ -14,7 +14,7 @@ class CreateEventsTable extends Migration
   public function up()
   {
     // blog table
-    Schema::create('event', function(Blueprint $table)
+    Schema::create('events', function(Blueprint $table)
     {
       $table->engine = 'InnoDB';
       $table->increments('id')->unique();
@@ -25,10 +25,6 @@ class CreateEventsTable extends Migration
       $table->time('start_time');
       $table->time('end_time');
       $table->unsignedInteger('venue_id')->nullable();
-      $table->foreign('venue_id')
-      ->references('id')
-      ->on('venue')
-      ->onDelete('set null');
       $table->enum('day_of_week', array(
         'Monday',
         'Tuesday',

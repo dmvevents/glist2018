@@ -7,36 +7,48 @@ use Illuminate\Database\Migrations\Migration;
 class CreateGuestsTable extends Migration
 {
   /**
-   * Run the migrations.
-   *
-   * @return void
-   */
+  * Run the migrations.
+  *
+  * @return void
+  */
   public function up()
-  {    // blog company
-      Schema::create('company', function(Blueprint $table)
-          {
-              $table->increments('id')->unique();
-              $table->string('name');
-              $table->string('email')->unique();
-              $table->unsignedInteger('address_id')->nullable();;
-              $table->foreign('address_id')
-                  ->references('id')
-                  ->on('address')
-                  ->onDelete('set null');
-              $table->string('ein');
+  {
+    // blog guest
+    Schema::create('guest', function(Blueprint $table)
+    {
+      $table->engine = 'InnoDB';
+      $table->increments('id')->unique();
+      $table->string('first');
+      $table->string('last');
+      $table->string('email');
+      $table->unsignedInteger('address_id')->nullable();
 
-              $table->timestamps();
-          });
+      $table->unsignedInteger('number_id')->nullable();
+
+      $table->date('dob')->nullable();
+      $table->enum('gender', array('male', 'female'))->nullable();
+      $table->string('instagram')->nullable();
+      $table->string('twitter')->nullable();
+      $table->string('facebook')->nullable();
+      $table->string('country')->nullable();
+      $table->binary('pic')->nullable();
+      $table->timestamps();
+    });
   }
 
   /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
+  * Reverse the migrations.
+  *
+  * @return void
+  */
   public function down()
   {
-      // drop company table
-      Schema::drop('company');
+    // drop blog guest
+
+    Schema::dropIfExists('guest', function(Blueprint $table)
+    {
+      $table->dropForeign(['address_id']);
+      $table->dropForeign(['number_id']);
+    });
   }
 }

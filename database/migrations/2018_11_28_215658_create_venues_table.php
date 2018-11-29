@@ -14,16 +14,12 @@ class CreateVenuesTable extends Migration
   public function up()
   {
       // blog guest
-      Schema::create('venue', function(Blueprint $table)
+      Schema::create('venues', function(Blueprint $table)
           {
               $table->increments('id')->unique();
               $table->string('name');
               $table->binary('pic');
               $table->unsignedInteger('address_id')->nullable();;
-              $table->foreign('address_id')
-                  ->references('id')
-                  ->on('address')
-                  ->onDelete('set null');
               $table->timestamps();
           });
   }
@@ -36,7 +32,7 @@ class CreateVenuesTable extends Migration
   public function down()
   {
       // drop blog venue
-      Schema::drop('venue');
+      Schema::drop('venues');
   }
 
 }

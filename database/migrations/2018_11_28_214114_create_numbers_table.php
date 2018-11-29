@@ -18,7 +18,7 @@ class CreateNumbersTable extends Migration
           {
               $table->increments('id')->unique();
               $table->string('number');
-              $table->enum('type', array('Home', 'Business','Work'));
+              $table->enum('type', array('Home', 'Business','Work','Cell','Fax'));
               $table->string('carrier');
               $table->string('state');
               $table->string('area');
