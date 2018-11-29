@@ -17,7 +17,7 @@ class CreateRsvpsFk extends Migration
 
       $table->foreign('event_id')
       ->references('id')
-      ->on('events')
+      ->on('event')
       ->onDelete('cascade');
 
       $table->foreign('guest_id')
@@ -27,7 +27,7 @@ class CreateRsvpsFk extends Migration
 
       $table->foreign('user_id')
       ->references('id')
-      ->on('users')
+      ->on('user')
       ->onDelete('cascade');
 
     });

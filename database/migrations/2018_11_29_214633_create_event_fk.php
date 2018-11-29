@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsFk extends Migration
+class CreateEventFk extends Migration
 {
   /**
 	 * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEventsFk extends Migration
 	 */
 	public function up()
 	{
-		Schema::table('events', function(Blueprint $table) {
+		Schema::table('event', function(Blueprint $table) {
       $table->foreign('venue_id')
       ->references('id')
-      ->on('venues')
+      ->on('venue')
       ->onDelete('set null');
 		});
 	}
@@ -28,8 +28,8 @@ class CreateEventsFk extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('events', function(Blueprint $table) {
-      $table->dropForeign('events_venue_id_foreign');
+		Schema::table('event', function(Blueprint $table) {
+      $table->dropForeign('event_venue_id_foreign');
 		});
 	}
 }

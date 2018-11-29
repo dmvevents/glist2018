@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVenuesFk extends Migration
+class CreateVenueFk extends Migration
 {
   /**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVenuesFk extends Migration
 	 */
 	public function up()
 	{
-		Schema::table('venues', function(Blueprint $table) {
+		Schema::table('venue', function(Blueprint $table) {
       $table->foreign('address_id')
           ->references('id')
           ->on('address')
@@ -28,8 +28,8 @@ class CreateVenuesFk extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('venues', function(Blueprint $table) {
-      $table->dropForeign('venues_address_id_foreign');
+		Schema::table('venue', function(Blueprint $table) {
+      $table->dropForeign('venue_address_id_foreign');
 		});
 	}
 }

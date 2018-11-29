@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRsvpsTable extends Migration
+class CreateRsvpTable extends Migration
 {
   /**
   * Run the migrations.
@@ -35,6 +35,6 @@ class CreateRsvpsTable extends Migration
   */
   public function down()
   {
-    Schema::dropIfExists('rsvps');
+    Schema::dropIfExists('rsvp');
   }
 }

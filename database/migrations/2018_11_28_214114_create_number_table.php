@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVenuesTable extends Migration
+class CreateNumberTable extends Migration
 {
   /**
    * Run the migrations.
@@ -13,13 +13,15 @@ class CreateVenuesTable extends Migration
    */
   public function up()
   {
-      // blog guest
-      Schema::create('venues', function(Blueprint $table)
+      // blog number
+      Schema::create('number', function(Blueprint $table)
           {
               $table->increments('id')->unique();
-              $table->string('name');
-              $table->binary('pic');
-              $table->unsignedInteger('address_id')->nullable();;
+              $table->string('number');
+              $table->enum('type', array('Home', 'Business','Work','Cell','Fax'));
+              $table->string('carrier');
+              $table->string('state');
+              $table->string('area');
               $table->timestamps();
           });
   }
@@ -31,8 +33,7 @@ class CreateVenuesTable extends Migration
    */
   public function down()
   {
-      // drop blog venue
-      Schema::drop('venues');
+      // drop number table
+      Schema::drop('number');
   }
-
 }

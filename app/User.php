@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -63,7 +63,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
          $this->remember_token =  $value;
     }
 
-    public function getReminderEmail(){  
+    public function getReminderEmail(){
 
         $email = \Input::only('email');
         return $email['email'];

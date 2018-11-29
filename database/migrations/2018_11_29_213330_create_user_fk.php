@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersFk extends Migration
+class CreateUserFk extends Migration
 {
   /**
 	 * Run the migrations.
@@ -13,8 +13,11 @@ class CreateUsersFk extends Migration
 	 */
 	public function up()
 	{
-		Schema::table('users', function(Blueprint $table) {
-      $table->foreign('address_id')->references('id')->on('address')->onDelete('set null');
+		Schema::table('user', function(Blueprint $table) {
+      $table->foreign('address_id')
+				->references('id')
+				->on('address')
+				->onDelete('set null');
 		});
 	}
 
@@ -25,8 +28,8 @@ class CreateUsersFk extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('users', function(Blueprint $table) {
-      $table->dropForeign('users_address_id_foreign');
+		Schema::table('user', function(Blueprint $table) {
+      $table->dropForeign('user_address_id_foreign');
 		});
 	}
 }

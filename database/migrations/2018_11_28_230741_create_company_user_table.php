@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyUsersTable extends Migration
+class CreateCompanyUserTable extends Migration
 {
   /**
   * Run the migrations.
@@ -25,7 +25,7 @@ class CreateCompanyUsersTable extends Migration
       $table->unsignedInteger('user_id');
       $table->foreign('user_id')
       ->references('id')
-      ->on('users')
+      ->on('user')
       ->onDelete('cascade');
       $table->boolean('is_owner')->default(false);
       $table->timestamps();
