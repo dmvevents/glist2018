@@ -18,7 +18,7 @@ class CreateVenueTable extends Migration
           {
               $table->increments('id')->unique();
               $table->string('name');
-              $table->binary('pic');
+              $table->binary('pic')->nullable();
               $table->unsignedInteger('address_id')->nullable();;
               $table->timestamps();
           });

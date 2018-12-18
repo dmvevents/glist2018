@@ -18,13 +18,13 @@ class CreateAddressTable extends Migration
       $table->engine = 'InnoDB';
       $table->increments('id')->unique();
       $table->string('address1');
-      $table->string('address2');
+      $table->string('address2')->nullable();
       $table->string('city');
       $table->string('state',2);
       $table->string('postalcode',16);
-      $table->string('country',2);
-      $table->double('lng', 11, 8);
-      $table->double('lat', 10, 8);
+      $table->string('country',2)->nullable();
+      $table->double('lng', 11, 8)->nullable();
+      $table->double('lat', 10, 8)->nullable();
 
       $table->timestamps();
     });

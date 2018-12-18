@@ -38,8 +38,8 @@ class CreateEventTable extends Migration
       $table->time('male_free_time');
       $table->integer('female_age');
       $table->integer('male_age');
-      $table->string('dress_code');
-      $table->binary('pic');
+      $table->string('dress_code')->nullable();
+      $table->binary('pic')->nullable();
       $table->boolean('repeating')->default(false);
       $table->enum('repeat_type', array(
         'Daily',

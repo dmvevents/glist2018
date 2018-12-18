@@ -12,43 +12,58 @@
 */
 
 Route::get('/', function () {
-    return view('front.welcome');
+  return view('front.welcome');
 });
 
 Route::get('/form', function () {
-    return view('front.form1');
+  return view('front.form1');
 });
 
 Route::get('/events', function () {
-    return view('front.events');
+  return view('front.events');
 });
 
 Route::get('/gallery', function () {
-    return view('front.gallery');
+  return view('front.gallery');
 });
 
 Route::get('/contact', function () {
-    return view('front.contact');
+  return view('front.contact');
 });
 
 Route::get('/services', function () {
-    return view('front.services');
+  return view('front.services');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+  return view('dashboard.dashboard');
 });
 
 Route::get('/404', function () {
-    return view('dashboard.404');
+  return view('dashboard.404');
 });
 
+/*
 Route::get('/login', function () {
-    return view('dashboard.login');
+  return view('dashboard.login');
 });
+*/
 
 Route::get('test', 'TestController@index');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/passreset', 'HomeController@index')->name('password.reset');
+
+Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+
+
+Route::get('/admin', 'AdminController@admin')
+->middleware('is_admin')
+->name('admin');
+
+Route::prefix('admin')->group(function() {
+
+  Route::get('/dashboard1', 'AdminController@index')->name('admin.home');
+});
